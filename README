@@ -1,3 +1,10 @@
-h1. Tabi, a jQuery plugin for tabs
- 
-Tabby is a jQuery plugin for creating tabbed interfaces with multiple rows of tabs (like some desktop apps do).
+=====================================================================
+                  Tabi, a jQuery plugin for tabs
+===================================================================== 
+
+TODO:
+
+* Code refactoring
+* More basic functionality: default tab, not anchor links behaviour, styles handling...
+* Configuration system
+* Instructions and examples
