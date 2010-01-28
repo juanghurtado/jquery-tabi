@@ -20,37 +20,40 @@
 		// Helper functions
 		var bindClick = function() {
 			$context.find('a').bind('click', function(event) {
-				// Handle "current" class
-				$context.find('li').removeClass('current');
-				$(this).parent().addClass('current');
-				
-				// Add all groups except current one (unbinding click event from every link)
-				var rows = new Array();
-				$context.find('ul.tabi').each(function(index) {
-					$(this).find('li').find('a').unbind('click');
+				// Check if clicked element is an anchor
+				if ($(this).attr('href').substr(0,1) == '#') {
+					// Handle "current" class
+					$context.find('li').removeClass('current');
+					$(this).parent().addClass('current');
+
+					// Add all groups except current one (unbinding click event from every link)
+					var rows = new Array();
+					$context.find('ul.tabi').each(function(index) {
+						$(this).find('li').find('a').unbind('click');
+
+						if (!$(this).has($(this).parent()).length) {
+							rows[index] = $(this).find('li');
+						}
+					});
+
+					// Add current group at the end
+					rows[rows.length] = $(this).parent().siblings().andSelf();
+
+					// Remove old UL
+					$context.find('ul.tabi').remove();
+
+					// Create new UL
+					createULs(rows, $context);
+
+					// Bind click event again
+					bindClick();
 					
-					if (!$(this).has($(this).parent()).length) {
-						rows[index] = $(this).find('li');
-					}
-				});
-				
-				// Add current group at the end
-				rows[rows.length] = $(this).parent().siblings().andSelf();
-				
-				// Remove old UL
-				$context.find('ul.tabi').remove();
-				
-				// Create new UL
-				createULs(rows, $context);
-				
-				// Bind click event again
-				bindClick();
-				
-				$('.content').hide();
-				$($(this).attr('href')).show();
-				
-				// Prevent href linking
-				event.preventDefault();
+					// Show only the target element of the clicked link
+					$('.content').hide().filter($(this).attr('href')).show();
+
+					// Prevent href linking
+					event.preventDefault();
+				}
 			});
 		};
 		
@@ -83,10 +86,10 @@
 				i++;
 			};
 			
+			// Show default element (first one of the last row)
+			// TODO: Allow custom default element
 			var href = $(rows[rows.length - 1][0]).addClass('current').find('a').attr('href');
-			
-			$('.content').hide();
-			$(href).show();
+			$('.content').hide().filter(href).show();
 			
 			// 2.- Check if there are rows
 			if (rows.length <= 0) {
@@ -96,9 +99,10 @@
 			// 3.- Insert one UL per row after the original one
 			createULs(rows, $context);
 			
+			// 5.- Bind click event
 			bindClick();
 			
-			// 4.- Remove original UL
+			// 5.- Remove original UL
 			$originalUL.remove();
 		});
 	};
