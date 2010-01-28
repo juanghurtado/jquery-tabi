@@ -1,0 +1,123 @@
+/* ----------------------------------------------------------------------------
+	Main stylesheet
+	Author: Juan G. Hurtado
+	e-Mail: juan.g.hurtado@gmail.com
+   ---------------------------------------------------------------------------- */
+
+/* =Misc
+   ---------------------------------------------------------------------------- */
+/* Import reset styles */
+@import url(reset.css);
+
+/* Self-clear floats */
+.clearfix:after, .group:after {
+	clear: both; 
+	content: "."; 
+	display: block; 
+	height: 0; 
+	visibility: hidden;
+}
+
+/* Hide without display: none; (http://gist.github.com/225929) */
+.internal, .hide, hr {
+	display: block;
+	height: 1px;
+	left: -999em;
+	position: absolute;
+	text-indent: -999em;
+	top: -999em;
+	width: 1px;
+}
+
+/* Example of font-face */
+@font-face {  
+	font-family: "fontName";
+	src: url(/location/of/font/FontFileName.eot);  /* IE */
+	src: local("realFontName"), url(/location/of/font/FontFileName.ttf) format("truetype"); /* non-IE */
+}
+
+/* =Global
+   ---------------------------------------------------------------------------- */
+body {
+	color: #666;
+	font: 100%/1.5 Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: #002162;
+	text-decoration: none;
+}
+
+#wrapper {
+	margin: 2em 10%;
+}
+
+/* =Header
+   ---------------------------------------------------------------------------- */
+#header {}
+
+	#header h1 {
+		color: #000;
+		font-size: 3em;
+		font-weight: normal;
+	}
+
+/* =Main
+   ---------------------------------------------------------------------------- */
+#main {}
+
+	#main .content {
+		background: #ddd;
+		border: 1px solid #333;
+		padding: 0.5em;
+	}
+
+	#main .tabi-global {
+		background: #eee;
+	}
+	
+		#main .tabi-global ul {}
+		
+			#main .tabi-global ul li.tabi-0 {
+				width: 33.3333%;
+			}
+			
+			#main .tabi-global ul li.tabi-1 {
+				width: 25%;
+			}
+			
+			#main .tabi-global ul li.tabi-2 {
+				width: 50%;
+			}
+			
+			#main .tabi-global ul li {
+				float: left;
+			}
+			
+			#main .tabi-global ul li.current {
+				position: relative;
+				bottom: -1px;
+			}
+			
+				#main .tabi-global ul li a {
+					background: #eee;
+					border: 1px solid #aaa;
+					border-width: 1px 1px 0px 1px;
+					display: block;
+					padding: 0.25em;
+					
+					border-radius: 4px 4px 0 0;
+					-moz-border-radius: 4px 4px 0 0;
+					-webkit-border-radius: 4px 4px 0 0;
+				}
+				
+				#main .tabi-global ul li a:hover {
+					color: #000;
+				}
+				
+				#main .tabi-global ul li.current a {
+					background: #ddd;
+					border-color: #333;
+					color: #000;
+					text-decoration: underline;
+				}
