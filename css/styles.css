@@ -52,6 +52,10 @@ a {
 	margin: 2em 10%;
 }
 
+p, h1, h2, h3, h4, h5, h6, ul {
+	margin-bottom: 1em;
+}
+
 /* =Header
    ---------------------------------------------------------------------------- */
 #header {}
@@ -76,7 +80,10 @@ a {
 		background: #eee;
 	}
 	
-		#main .tabi-global ul {}
+		
+		#main .tabi-global ul {
+			margin: 0;
+		}
 		
 			#main .tabi-global ul li.tabi-0 {
 				width: 33.3333%;
