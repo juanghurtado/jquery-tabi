@@ -7,17 +7,23 @@
 * --------------------------------------------------------------------------*/
 (function($) {
 	$.fn.tabi = function (options) {
+		// =================================================================
 		// Global vars
+		// =================================================================
 		var $originalUL,
 			$context;
 		
+		// =================================================================
 		// Options management
+		// =================================================================
 		var defaults = {
 			setvalue: true
 	    },
 		options = jQuery.extend(defaults, options || {});
 		
+		// =================================================================
 		// Helper functions
+		// =================================================================
 		var bindClick = function() {
 			$context.find('a').bind('click', function(event) {
 				// Check if clicked element is an anchor
@@ -68,41 +74,61 @@
 			});
 		};
 		
+		// =================================================================
 		// Plugin loop
+		// =================================================================
 	    return this.each(function () {
 			$originalUL = $(this);
 			$context = $(this).wrap('<div class="tabi-global"></div>').parent();
+			var href = "";
 			
-			// 1.- Group elements inside UL by their class
+			// 1.- Create array for ordering rows
 			var i = 0,
-			rows = new Array();
+				rows = new Array(),
+				currentRow;
 			
 			while(elements = $(this).find('li.tabi-'+ i)) {
 				if (elements.length <= 0) {
 					break;
 				}
 				
-				rows[i] = elements;
+				// Check if this is the current row
+				if (elements.hasClass('current')) {
+					// If so, store it
+					currentRow = elements;
+					
+					// Save current link's target
+					href = elements.filter('.current').find('a').attr('href');
+				} else {
+					rows[rows.length] = elements;
+				}
+				
 				i++;
 			};
 			
-			// Show default element (first one of the last row)
-			// TODO: Allow custom default element
-			var href = $(rows[rows.length - 1][0]).addClass('current').find('a').attr('href');
-			$('.content').hide().filter(href).show();
+			// Put current row on last place of the array
+			if (currentRow) {
+				rows[rows.length] = currentRow;
+			}
 			
 			// 2.- Check if there are rows
 			if (rows.length <= 0) {
 				return false;
 			}
 			
-			// 3.- Insert one UL per row after the original one
+			// 3.- Show default element (first one of the last row) if it's not defined
+			if (href == "") {
+				href = $(rows[rows.length - 1][0]).addClass('current').find('a').attr('href');
+			}
+			$('.content').hide().filter(href).show();
+			
+			// 4.- Insert one UL per row after the original one
 			createULs(rows, $context);
 			
 			// 5.- Bind click event
 			bindClick();
 			
-			// 5.- Remove original UL
+			// 6.- Remove original UL
 			$originalUL.remove();
 		});
 	};
