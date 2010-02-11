@@ -26,36 +26,39 @@
 		// =================================================================
 		var bindClick = function() {
 			$context.find('a').bind('click', function(event) {
+				var $element = $(this);
+				
 				// Check if clicked element is an anchor
 				if ($(this).attr('href').substr(0,1) == '#') {
 					// Handle "current" class
-					$context.find('li').removeClass('current');
+					$context.find('li.current').removeClass('current')
+						.end().find('ul.current-row').removeClass('current-row');
 					$(this).parent().addClass('current');
 
-					// Add all groups except current one (unbinding click event from every link)
+					// Add all tabs except current one (unbinding click event from every link)
 					var rows = new Array();
-					$context.find('ul.tabi').each(function(index) {
+					$context.find('ul.tabi-row').each(function(index) {
 						$(this).find('li').find('a').unbind('click');
-
-						if (!$(this).has($(this).parent()).length) {
-							rows[index] = $(this).find('li');
+						
+						if (!$(this).has($element.parent()).length) {
+							rows[rows.length] = $(this).find('li');
 						}
 					});
-
+					
 					// Add current group at the end
 					rows[rows.length] = $(this).parent().siblings().andSelf();
+					
+					// Remove old ULs
+					$context.find('ul.tabi-row').remove();
 
-					// Remove old UL
-					$context.find('ul.tabi').remove();
-
-					// Create new UL
+					// Create new ULs
 					createULs(rows, $context);
 
 					// Bind click event again
 					bindClick();
 					
-					// Show only the target element of the clicked link
-					$('.content').hide().filter($(this).attr('href')).show();
+					// Show only the target element of the clicked link and hide the rest
+					handleTargetVisibility(rows, $element.attr('href'));
 
 					// Prevent href linking
 					event.preventDefault();
@@ -63,14 +66,28 @@
 			});
 		};
 		
+		var handleTargetVisibility = function(rows, currentHref) {
+			$.each(rows, function(index, val) {
+				$(this).find('a').each(function(index) {
+					$($(this).attr('href')).hide().filter(currentHref).show();
+				});
+			});
+		};
+		
 		var createULs = function(rows, $where) {
 			$.each(rows, function(index, val) {
-				var $ul = $('<ul class="tabi group"></ul>');
-				$(val).each(function(index) {
-					$ul.append($(this));
-				});
-				
-				$where.append($ul);
+				if (val != undefined) {
+					var $ul = $('<ul class="'+ $originalUL.attr('class') +' tabi-row row-'+ index +'"></ul>');
+					$(val).each(function(index) {
+						$ul.append($(this));
+
+						if ($(this).hasClass('current')) {
+							$(this).parent().addClass('current-row');
+						}
+					});
+
+					$where.append($ul);
+				}
 			});
 		};
 		
@@ -109,6 +126,7 @@
 			// Put current row on last place of the array
 			if (currentRow) {
 				rows[rows.length] = currentRow;
+				currentRow.parent().addClass('current-row');
 			}
 			
 			// 2.- Check if there are rows
@@ -116,11 +134,12 @@
 				return false;
 			}
 			
-			// 3.- Show default element (first one of the last row) if it's not defined
+			// 3.- Hide all target elements except active one
 			if (href == "") {
 				href = $(rows[rows.length - 1][0]).addClass('current').find('a').attr('href');
 			}
-			$('.content').hide().filter(href).show();
+			
+			handleTargetVisibility(rows, href);
 			
 			// 4.- Insert one UL per row after the original one
 			createULs(rows, $context);
