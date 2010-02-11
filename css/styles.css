@@ -76,12 +76,16 @@ p, h1, h2, h3, h4, h5, h6, ul {
 		padding: 0.5em;
 	}
 
-	#main .tabi-global {
-		background: #eee;
-	}
+	#main .tabi-global {}
 	
 		
 		#main .tabi-global ul {
+			font-size: 0.9em;
+			margin: 0 0.25em;
+		}
+		
+		#main .tabi-global ul.current-row {
+			font-size: 1em;
 			margin: 0;
 		}
 		
