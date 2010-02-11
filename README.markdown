@@ -6,12 +6,11 @@ With Tabi you can put this tabs on a row system, having as many rows of tabs as 
 
 Imagine you have 10 tabs on your web. They don't fit on the space they are supose to stand (10 tabs needs much space!). Tabi let you order this tabs on different rows, so you can have, for example, one row with 2 tabs, another one with 5, and the last one with 3 tabs.
 
-This is done with class names, so you don't have to write almost any Javascript (just the init method).
+This is done with class names, so you don't have to write almost any Javascript (just the init call).
 
 ## TO-DO
 
 - Proper README file (instalation, use, configuration, styling tabs…)
 - Code refactoring
-- More basic functionality: styles handling…
 - Configuration system
 - Detailed examples
