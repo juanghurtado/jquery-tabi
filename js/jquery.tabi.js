@@ -17,7 +17,7 @@
 		// Options management
 		// =================================================================
 		var defaults = {
-			setvalue: true
+			tabChangeCallback: function($this) {}
 	    },
 		options = jQuery.extend(defaults, options || {});
 		
@@ -31,14 +31,14 @@
 				// Check if clicked element is an anchor
 				if ($(this).attr('href').substr(0,1) == '#') {
 					// Handle "current" class
-					$context.find('li.current').removeClass('current')
+					$context.find('li.current-tab').removeClass('current-tab')
 						.end().find('ul.current-row').removeClass('current-row');
-					$(this).parent().addClass('current');
+					$(this).parent().addClass('current-tab');
 
 					// Add all tabs except current one (unbinding click event from every link)
 					var rows = new Array();
 					$context.find('ul.tabi-row').each(function(index) {
-						$(this).find('li').find('a').unbind('click');
+						$(this).find('li a').unbind('click');
 						
 						if (!$(this).has($element.parent()).length) {
 							rows[rows.length] = $(this).find('li');
@@ -62,6 +62,9 @@
 
 					// Prevent href linking
 					event.preventDefault();
+					
+					// Execute callback
+					options.tabChangeCallback($(this));
 				}
 			});
 		};
@@ -81,7 +84,7 @@
 					$(val).each(function(index) {
 						$ul.append($(this));
 
-						if ($(this).hasClass('current')) {
+						if ($(this).hasClass('current-tab')) {
 							$(this).parent().addClass('current-row');
 						}
 					});
@@ -110,12 +113,12 @@
 				}
 				
 				// Check if this is the current row
-				if (elements.hasClass('current')) {
+				if (elements.hasClass('current-tab')) {
 					// If so, store it
 					currentRow = elements;
 					
 					// Save current link's target
-					href = elements.filter('.current').find('a').attr('href');
+					href = elements.filter('.current-tab').find('a').attr('href');
 				} else {
 					rows[rows.length] = elements;
 				}
@@ -136,7 +139,7 @@
 			
 			// 3.- Hide all target elements except active one
 			if (href == "") {
-				href = $(rows[rows.length - 1][0]).addClass('current').find('a').attr('href');
+				href = $(rows[rows.length - 1][0]).addClass('current-tab').find('a').attr('href');
 			}
 			
 			handleTargetVisibility(rows, href);
