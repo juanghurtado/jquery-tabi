@@ -79,7 +79,7 @@ p, h1, h2, h3, h4, h5, h6, ul {
 	#main .tabi-global {}
 	
 		
-		#main .tabi-global ul {
+		#main .tabi-global ul, #main .example ul {
 			font-size: 0.9em;
 			margin: 0 0.25em;
 		}
@@ -101,16 +101,16 @@ p, h1, h2, h3, h4, h5, h6, ul {
 				width: 50%;
 			}
 			
-			#main .tabi-global ul li {
+			#main .tabi-global ul li, #main .example ul li {
 				float: left;
 			}
 			
-			#main .tabi-global ul li.current {
+			#main .tabi-global ul li.current-tab, #main .example ul li.current-tab {
 				position: relative;
 				bottom: -1px;
 			}
 			
-				#main .tabi-global ul li a {
+				#main .tabi-global ul li a, #main .example ul li a {
 					background: #eee;
 					border: 1px solid #aaa;
 					border-width: 1px 1px 0px 1px;
@@ -122,11 +122,11 @@ p, h1, h2, h3, h4, h5, h6, ul {
 					-webkit-border-radius: 4px 4px 0 0;
 				}
 				
-				#main .tabi-global ul li a:hover {
+				#main .tabi-global ul li a:hover, #main .example ul li a:hover {
 					color: #000;
 				}
 				
-				#main .tabi-global ul li.current a {
+				#main .tabi-global ul li.current-tab a, #main .example ul li.current-tab a {
 					background: #ddd;
 					border-color: #333;
 					color: #000;
