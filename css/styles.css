@@ -45,7 +45,6 @@ body {
 
 a {
 	color: #002162;
-	text-decoration: none;
 }
 
 #wrapper {
@@ -61,20 +60,46 @@ p, h1, h2, h3, h4, h5, h6, ul {
 #header {}
 
 	#header h1 {
+		border-top: 8px solid #eee;
 		color: #000;
 		font-size: 3em;
 		font-weight: normal;
+		line-height: 1.3em;
+		margin-bottom: 0.5em;
 	}
 
 /* =Main
    ---------------------------------------------------------------------------- */
 #main {}
 
+	#main h2 {
+		border-top: 4px solid #eee;
+		color: #000;
+		font-size: 1.5em;
+		font-weight: normal;
+		margin-bottom: 0.5em;
+		margin-top: 2em;
+	}
+	
+	#main pre {
+		background: #eee;
+		border: 1px solid #ccc;
+		color: #777;
+		font: 1.1em/1.5em Courier, monospace;
+		margin-bottom: 1.5em;
+		padding: 0.5em 1em;
+	}
+	
 	#main .content {
 		background: #ddd;
 		border: 1px solid #333;
 		padding: 0.5em;
 	}
+	
+		#main .content h2 {
+			border: 0;
+			margin-top: 0;
+		}
 
 	#main .tabi-global {}
 	
@@ -116,10 +141,12 @@ p, h1, h2, h3, h4, h5, h6, ul {
 					border-width: 1px 1px 0px 1px;
 					display: block;
 					padding: 0.25em;
+					text-decoration: none;
 					
 					border-radius: 4px 4px 0 0;
 					-moz-border-radius: 4px 4px 0 0;
-					-webkit-border-radius: 4px 4px 0 0;
+					-webkit-border-top-left-radius: 4px;
+					-webkit-border-top-right-radius: 4px;
 				}
 				
 				#main .tabi-global ul li a:hover, #main .example ul li a:hover {
