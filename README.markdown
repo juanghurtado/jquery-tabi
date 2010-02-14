@@ -89,16 +89,22 @@ In order to style your tabs the way you want, Tabi creates an HTML structure ful
 
 So you can use a CSS like this:
 
-<pre><code>div.tabi-global {}
-
+<pre><code>/* Global wrapper */
+div.tabi-global {}
+	
+	/* Every Tabi row */
 	div.tabi-global ul.tabi-row {}
 	
+	/* Current row (where current tab is) */
 	div.tabi-global ul.current-row {}
 	
+	/* Consecutive rows (row-0, row-1, row-2 and so on) */
 	div.tabi-global ul.row-N {}
-	
+		
+		/* Tabs */
 		div.tabi-global ul.tabi-row li {}
 		
+		/* Current tab */
 		div.tabi-global ul.tabi-row li.current-tab {}</code></pre>
 		
 ## Support
