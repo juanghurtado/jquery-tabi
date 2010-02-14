@@ -67,9 +67,9 @@ Tabi's init method can get some configuration params, one of them is <code>tabCh
 
 That function recieves a jQuery object with the link of the current tab so you can have a lot of information about many things:
 
-var linkClicked = $this;				// Clicked link
-var activeTab = $this.parent();			// Active LI tab
-var activeRow = $this.parents('ul');	// Current UL row
+<pre><code>var linkClicked = $this;					// Clicked link
+var activeTab = $this.parent();			 // Active LI tab
+var activeRow = $this.parents('ul');	 // Current UL row</code></pre>
 
 ## CSS Styling
 
