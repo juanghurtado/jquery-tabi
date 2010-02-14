@@ -41,7 +41,7 @@ Once you have the HTML structure it's time to use Tabi to transform it. You just
 	jQuery('ul.group').tabi();
 });</code></pre>
 
-## What Tabi does with the tab links?
+## What does Tabi with links?
 
 If you watch the previous example you'll see lots of anchors on the <code>href</code> attributes of the links. They are supposed to point to elements of the page with and <code>id</code> equals to the value of the anchor. For example, a link with <code>href="#row0-1"</code> targets to an element with <code>id="row0-1"</code>.
 
@@ -100,6 +100,10 @@ So you can use a CSS like this:
 		div.tabi-global ul.tabi-row li {}
 		
 		div.tabi-global ul.tabi-row li.current-tab {}</code></pre>
+		
+## Support
+
+Tabi is still in development, so surely it's full of bugs and mistakes. If you find one <a href="http://github.com/juanghurtado/jquery.tabi/issues">please let me know</a> (this also refers to this text, because my english is not good enough yet).
 
 ## TO-DO
 
