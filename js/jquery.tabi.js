@@ -72,7 +72,7 @@
 		var handleTargetVisibility = function(rows, currentHref) {
 			$.each(rows, function(index, val) {
 				$(this).find('a').each(function(index) {
-					$($(this).attr('href')).hide().filter(currentHref).show();
+					$('#'+ $(this).attr('href').split('#')[1]).hide().filter('#'+ currentHref.split('#')[1]).show();
 				});
 			});
 		};
