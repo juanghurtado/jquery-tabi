@@ -6,7 +6,11 @@
 	
 	<script type="text/javascript" src="js/jquery-1.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.tabi.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript">
+		jQuery(function() {
+			jQuery('ul.my-tab-system').tabi();
+		});
+	</script>
 	
 	<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
 	
@@ -29,63 +33,78 @@
 <body>
 <div id="wrapper">
 	<div id="header">
-		<h1>Tabi Example - Setting default tab</h1>
+		<a href="index.html" title="Tabi, a jQuery plugin for tabbed interfaces"><img src="images/layout/logo.png" alt="Tabi, a jQuery plugin for tabbed interfaces" /></a>
+		<h1>Example 02 - Setting default tab</h1>
 	</div>
 	
 	<hr />
 	
 	<div id="main">
 		<div class="example">
-			<ul class="group">
-				<li class="tabi-0"><a href="#group0-1">Group 0 - Element 1</a></li>
-				<li class="tabi-0"><a href="#group0-2">Group 0 - Element 2</a></li>
-				<li class="tabi-0"><a href="#group0-3">Group 0 - Element 3</a></li>
-				<li class="tabi-1"><a href="#group1-1">Group 1 - Element 1</a></li>
-				<li class="tabi-1"><a href="#group1-2">Group 1 - Element 2</a></li>
-				<li class="tabi-1 current"><a href="#group1-3">Group 1 - Element 3</a></li>
-				<li class="tabi-1"><a href="#group1-4">Group 1 - Element 4</a></li>
-				<li class="tabi-2"><a href="#group2-1">Group 2 - Element 1</a></li>
-				<li class="tabi-2"><a href="#group2-2">Group 2 - Element 2</a></li>
+			<?php
+				$tab = $_GET['tab']==null?4:$_GET['tab'];
+			?>
+			<ul class="my-tab-system group">
+				<li class="tabi-0 <?= $tab==1?'current-tab':'' ?>"><a href="example-2.php?tab=1#group0-1">Lorem</a></li>
+				<li class="tabi-0 <?= $tab==2?'current-tab':'' ?>"><a href="example-2.php?tab=2#group0-2">Ipsum</a></li>
+				<li class="tabi-0 <?= $tab==3?'current-tab':'' ?>"><a href="example-2.php?tab=3#group0-3">Dolor</a></li>
+				<li class="tabi-0 <?= $tab==4?'current-tab':'' ?>"><a href="example-2.php?tab=4#group0-4">About this example</a></li>
+				<li class="tabi-1 <?= $tab==5?'current-tab':'' ?>"><a href="example-2.php?tab=5#group1-1">Consectetur</a></li>
+				<li class="tabi-1 <?= $tab==6?'current-tab':'' ?>"><a href="example-2.php?tab=6#group1-2">Adipiscing</a></li>
+				<li class="tabi-2 <?= $tab==7?'current-tab':'' ?>"><a href="example-2.php?tab=7#group2-1">Sit Amet</a></li>
+				<li class="tabi-2 <?= $tab==8?'current-tab':'' ?>"><a href="example-2.php?tab=8#group2-2">Eiusmod</a></li>
+				<li class="tabi-2 <?= $tab==9?'current-tab':'' ?>"><a href="example-2.php?tab=9#group2-3">Tempor</a></li>
 			</ul>
 			<div class="content">
 				<div id="group0-1">
-					<h2>Group 0 - Element 1</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 				<div id="group0-2">
-					<h2>Group 0 - Element 2</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 				<div id="group0-3">
-					<h2>Group 0 - Element 3</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
+				<div id="group0-4">
+					<h2>How can I set the default tab?</h2>
+					
+					<p>By default, Tabi shows the first tab of the last row. If you want to change that behaviour (like I have done in these example) you just need to add <code>class="current-tab"</code> to the <code>LI</code> element that you want to be active when the page loads. Take a look at the code:</p>
+					
+<pre><code>&lt;ul class="my-tab-system group"&gt;
+	&lt;li class=&quot;tabi-0&quot;&gt;&lt;a href=&quot;#group0-1&quot;&gt;Lorem&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-0&quot;&gt;&lt;a href=&quot;#group0-2&quot;&gt;Ipsum&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-0&quot;&gt;&lt;a href=&quot;#group0-3&quot;&gt;Dolor&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-0 <strong>current-tab</strong>&quot;&gt;&lt;a href=&quot;#group0-4&quot;&gt;About this example&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-1&quot;&gt;&lt;a href=&quot;#group1-1&quot;&gt;Consectetur&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-1&quot;&gt;&lt;a href=&quot;#group1-2&quot;&gt;Adipiscing&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-2&quot;&gt;&lt;a href=&quot;#group2-1&quot;&gt;Sit Amet&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-2&quot;&gt;&lt;a href=&quot;#group2-2&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+	&lt;li class=&quot;tabi-2&quot;&gt;&lt;a href=&quot;#group2-3&quot;&gt;Styles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+					<p>This is a powerful tool, because it lets you define wich tab is visible. Imagine, for example, that you want your server code define the visible tab, how can you do that? With this configuration system you can.</p>
+				</div>
 				<div id="group1-1">
-					<h2>Group 1 - Element 1</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 				<div id="group1-2">
-					<h2>Group 1 - Element 2</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
-				<div id="group1-3">
-					<h2>Group 1 - Element 3</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
-				<div id="group1-4">
-					<h2>Group 1 - Element 4</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 				<div id="group2-1">
-					<h2>Group 2 - Element 1</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 				<div id="group2-2">
-					<h2>Group 2 - Element 2</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div id="group2-3">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div id="footer">
+		<p>Yayyy :) Hope you like it! If not, contact me at: <strong>juan.g.hurtado at gmail [dot] com</strong></p>
 	</div>
 </div>
 </body>
