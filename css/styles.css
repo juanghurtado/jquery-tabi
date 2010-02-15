@@ -90,72 +90,110 @@ p, h1, h2, h3, h4, h5, h6, ul {
 		padding: 0.5em 1em;
 	}
 	
+	/* Tab content */
 	#main .content {
-		background: #ddd;
-		border: 1px solid #333;
-		padding: 0.5em;
+		background: #eee;
+		
+		background: -webkit-gradient(
+		    linear,
+		    left bottom,
+		    left top,
+		    color-stop(0.15, #fff),
+		    color-stop(1, #eee)
+		);
+		
+		background: -moz-linear-gradient(
+		    center bottom,
+		    #fff 15%,
+		    #eee 100%
+		);
+		
+		border-top: 1px solid #ddd;
+		
+		padding: 1em;
 	}
 	
 		#main .content h2 {
 			border: 0;
 			margin-top: 0;
 		}
-
-	#main .tabi-global {}
+		
+	/* Tabs (Fallback if JS is not active) */
+	#main .example ul.group {
+		padding: 0 0.5em;
+	}
 	
+		#main .example ul.group li {
+			display: block;
+			float: left;
+			width: 150px;
+		}
 		
-		#main .tabi-global ul, #main .example ul {
+			#main .example ul.group li a {
+				background: #fcfcfc;
+				border: 1px solid #eee;
+				border-bottom: 0;
+				display: block;
+				color: #aaa;
+				font-size: 0.85em;
+				padding: 0.25em 0.25em 0 0.25em;
+				text-align: center;
+				text-decoration: none;
+				
+				-moz-border-radius-topright: 3px;
+				-webkit-border-top-right-radius: 3px;
+				-khtml-border-top-right-radius: 3px;
+				border-top-right-radius: 3px;
+				
+				-moz-border-radius-topleft: 3px;
+				-webkit-border-top-left-radius: 3px;
+				-khtml-border-top-left-radius: 3px;
+				border-top-left-radius: 3px;
+			}
+			
+			#main .example ul.group li a:focus,
+			#main .example ul.group li a:hover {
+				color: #222;
+			}
+		
+	/* Tabs with Tabi */
+	#main .example .tabi-global {}
+		
+		#main .example .tabi-global ul {
+			margin-bottom: 0;
 			font-size: 0.9em;
-			margin: 0 0.25em;
 		}
 		
-		#main .tabi-global ul.current-row {
+		#main .example .tabi-global ul.current-row {
 			font-size: 1em;
-			margin: 0;
 		}
 		
-			#main .tabi-global ul li.tabi-0 {
-				width: 33.3333%;
+			#main .example .tabi-global ul.current-row a {
+				color: #888;
 			}
-			
-			#main .tabi-global ul li.tabi-1 {
-				width: 25%;
+		
+		#main .example .tabi-global li.tabi-0 {
+			width: 33.3333%;
+		}
+		
+		#main .example .tabi-global li.tabi-1 {
+			width: 25%;
+		}
+		
+		#main .example .tabi-global li.tabi-2 {
+			width: 50%;
+		}
+		
+		#main .example .tabi-global li.current-tab {
+			bottom: -1px;
+			margin-top: -1px;
+			position: relative;
+		}
+		
+			#main .example .tabi-global li.current-tab a {
+				background: #eee;
+				border-color: #ddd;
+				color: #000;
+				font-weight: bold;
+				padding-bottom: 1px;
 			}
-			
-			#main .tabi-global ul li.tabi-2 {
-				width: 50%;
-			}
-			
-			#main .tabi-global ul li, #main .example ul li {
-				float: left;
-			}
-			
-			#main .tabi-global ul li.current-tab, #main .example ul li.current-tab {
-				position: relative;
-				bottom: -1px;
-			}
-			
-				#main .tabi-global ul li a, #main .example ul li a {
-					background: #eee;
-					border: 1px solid #aaa;
-					border-width: 1px 1px 0px 1px;
-					display: block;
-					padding: 0.25em;
-					text-decoration: none;
-					
-					border-radius: 4px 4px 0 0;
-					-moz-border-radius: 4px 4px 0 0;
-					-webkit-border-top-left-radius: 4px;
-					-webkit-border-top-right-radius: 4px;
-				}
-				
-				#main .tabi-global ul li a:hover, #main .example ul li a:hover {
-					color: #000;
-				}
-				
-				#main .tabi-global ul li.current-tab a, #main .example ul li.current-tab a {
-					background: #ddd;
-					border-color: #333;
-					color: #000;
-					text-decoration: underline;
-				}
