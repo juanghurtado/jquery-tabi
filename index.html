@@ -35,7 +35,8 @@
 	
 	<hr />
 	
-	<div id="main"><p>Tabi is a jQuery plugin for tabbed interfaces. It focus on interfaces with many tabs. On the web the horizontal space is limited and, as
+	<div id="main">
+		<p>Tabi is a jQuery plugin for tabbed interfaces. It focus on interfaces with many tabs. On the web the horizontal space is limited and, as
 		tabbed interfaces are horizontal, you can&#8217;t have many tabs on your design.</p>
 
 		<p>With Tabi you can put this tabs on a row system, having as many rows of tabs as you wish. Let&#8217;s see an example:</p>
@@ -49,32 +50,43 @@
 
 		<p>Installing Tabi is pretty simple, but remember that you <strong>need jQuery</strong> to make it work (Tabi has been tested with jQuery 1.4.x and above, but it should work with 1.3.x too).</p>
 
+		<p>Download an unzip the <a href="http://github.com/juanghurtado/jquery.tabi/zipball/master">source code</a>, and put it on your page.</p>
+
 		<pre><code>&lt;script type="text/javascript" src="js/jquery-1.4.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="js/jquery.tabi.js"&gt;&lt;script&gt;</code></pre>
+		&lt;script type="text/javascript" src="js/jquery.tabi.js"&gt;&lt;script&gt;</code></pre>
+
+		<h2 id="example_pages">Example pages</h2>
+
+		<p>Here you can see a few examples of Tabi:</p>
+
+		<ul>
+		<li><a href="http://tabi.coloresefimeros.com/example-1.html">Default use</a></li>
+		<li><a href="http://tabi.coloresefimeros.com/example-2.php">Setting default tab</a></li>
+		</ul>
 
 		<h2 id="basic_use">Basic use</h2>
 
 		<p>Ok, now let&#8217;s use Tabi to arrange an interface full of tabs. A semantic tabbed interface is usually marked with an HTML unordered list, so in order to make you write semantic code you must use one of those list to use Tabi. Here&#8217;s an example:</p>
 
 		<pre><code>&lt;ul class="group"&gt;
-    &lt;li class="tabi-0"&gt;&lt;a href="#row0-1"&gt;Row 0 - Element 1&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-0"&gt;&lt;a href="#row0-2"&gt;Row 0 - Element 2&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-0"&gt;&lt;a href="#row0-3"&gt;Row 0 - Element 3&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-1"&gt;&lt;a href="#row1-1"&gt;Row 1 - Element 1&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-1"&gt;&lt;a href="#row1-2"&gt;Row 1 - Element 2&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-1"&gt;&lt;a href="#row1-3"&gt;Row 1 - Element 3&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-1"&gt;&lt;a href="#row1-4"&gt;Row 1 - Element 4&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-2"&gt;&lt;a href="#row2-1"&gt;Row 2 - Element 1&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="tabi-2"&gt;&lt;a href="#row2-2"&gt;Row 2 - Element 2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+		    &lt;li class="tabi-0"&gt;&lt;a href="#row0-1"&gt;Row 0 - Element 1&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-0"&gt;&lt;a href="#row0-2"&gt;Row 0 - Element 2&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-0"&gt;&lt;a href="#row0-3"&gt;Row 0 - Element 3&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-1"&gt;&lt;a href="#row1-1"&gt;Row 1 - Element 1&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-1"&gt;&lt;a href="#row1-2"&gt;Row 1 - Element 2&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-1"&gt;&lt;a href="#row1-3"&gt;Row 1 - Element 3&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-1"&gt;&lt;a href="#row1-4"&gt;Row 1 - Element 4&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-2"&gt;&lt;a href="#row2-1"&gt;Row 2 - Element 1&lt;/a&gt;&lt;/li&gt;
+		    &lt;li class="tabi-2"&gt;&lt;a href="#row2-2"&gt;Row 2 - Element 2&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;</code></pre>
 
 		<p>Take a look at those <code>class</code> on the <code>LI</code> elements. They indicate the row grouping for the tabs, so elements with <code>"tabi-0"</code> will be on the first row, elements with <code>"tabi-1"</code> on the second one, and so on.</p>
 
 		<p>Once you have the HTML structure it&#8217;s time to use Tabi to transform it. You just need to point the <code>UL</code> element of your tabbed structure with jQuery and then call the Tabi init method:</p>
 
 		<pre><code>jQuery(function() {
-    jQuery('ul.group').tabi();
-});</code></pre>
+		    jQuery('ul.group').tabi();
+		});</code></pre>
 
 		<h2 id="what_does_tabi_with_links">What does Tabi with links?</h2>
 
@@ -93,73 +105,59 @@
 		<p>Tabi&#8217;s init method can get some configuration params, one of them is <code>tabChangeCallback</code> wich receives a function to be executed after clicking a tab:</p>
 
 		<pre><code>jQuery(function() {
-	jQuery('.example ul').tabi({
-        tabChangeCallback : function($this) {
-            alert('The new tab is: '+ $this);
-        }
-    });
-});</code></pre>
+		    jQuery('.example ul').tabi({
+		        tabChangeCallback : function($this) {
+		            alert('The new tab is: '+ $this);
+		        }
+		    });
+		});</code></pre>
 
 		<p>That function recieves a jQuery object with the link of the current tab so you can have a lot of information about many things:</p>
 
 		<pre><code>var linkClicked = $this;                 // Clicked link
-var activeTab = $this.parent();          // Active LI tab
-var activeRow = $this.parents('ul');     // Current UL row</code></pre>
+		var activeTab = $this.parent();          // Active LI tab
+		var activeRow = $this.parents('ul');     // Current UL row</code></pre>
 
 		<h2 id="css_styling">CSS Styling</h2>
 
 		<p>In order to style your tabs the way you want, Tabi creates an HTML structure full of <em>hooks</em> that you can use on your CSS:</p>
 
 		<pre><code>&lt;div class=&quot;tabi-global&quot;&gt;
-    &lt;ul class=&quot;tabi-row row-0 current-row&quot;&gt;
-        &lt;li class=&quot;tabi-0 current-tab&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul class=&quot;tabi-row row-1&quot;&gt;
-        &lt;li class=&quot;tabi-1&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul class=&quot;tabi-row row-2&quot;&gt;
-        &lt;li class=&quot;tabi-2&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
+		    &lt;ul class=&quot;tabi-row row-0 current-row&quot;&gt;
+		        &lt;li class=&quot;tabi-0 current-tab&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+		    &lt;/ul&gt;
+		    &lt;ul class=&quot;tabi-row row-1&quot;&gt;
+		        &lt;li class=&quot;tabi-1&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+		    &lt;/ul&gt;
+		    &lt;ul class=&quot;tabi-row row-2&quot;&gt;
+		        &lt;li class=&quot;tabi-2&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+		    &lt;/ul&gt;
+		&lt;/div&gt;</code></pre>
 
 		<p>So you can use a CSS like this:</p>
 
 		<pre><code>/* Global wrapper */
-div.tabi-global {}
+		div.tabi-global {}
 
-    /* Every Tabi row */
-    div.tabi-global ul.tabi-row {}
+		    /* Every Tabi row */
+		    div.tabi-global ul.tabi-row {}
 
-    /* Current row (where current tab is) */
-    div.tabi-global ul.current-row {}
+		    /* Current row (where current tab is) */
+		    div.tabi-global ul.current-row {}
 
-    /* Consecutive rows (row-0, row-1, row-2 and so on) */
-    div.tabi-global ul.row-N {}
+		    /* Consecutive rows (row-0, row-1, row-2 and so on) */
+		    div.tabi-global ul.row-N {}
 
-        /* Tabs */
-        div.tabi-global ul.tabi-row li {}
+		        /* Tabs */
+		        div.tabi-global ul.tabi-row li {}
 
-        /* Current tab */
-        div.tabi-global ul.tabi-row li.current-tab {}</code></pre>
+		        /* Current tab */
+		        div.tabi-global ul.tabi-row li.current-tab {}</code></pre>
 
 		<h2 id="support">Support</h2>
 
 		<p>Tabi is still in development, so surely it&#8217;s full of bugs and mistakes. If you find one <a href="http://github.com/juanghurtado/jquery.tabi/issues">please let me know</a> (this also refers to this text, because my english is not good enough yet).</p>
-
-		<h2 id="to_do">TO-DO</h2>
-
-		<ul>
-		<li>Code refactoring</li>
-		<li>Configuration system</li>
-		<li>Detailed examples</li>
-		</ul>
 		
-		<h2>Examples</h2>
-		
-		<ul>
-			<li><a href="example-1.html">Example 1</a>: Default behaviour</li>
-			<li><a href="example-2.html">Example 2</a>: Setting default tab</li>
-		</ul>
 	</div>
 	
 	<div id="footer">

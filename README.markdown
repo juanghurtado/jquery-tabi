@@ -14,8 +14,17 @@ This is done with class names, so you don't have to write almost any Javascript 
 
 Installing Tabi is pretty simple, but remember that you **need jQuery** to make it work (Tabi has been tested with jQuery 1.4.x and above, but it should work with 1.3.x too).
 
+Download an unzip the <a href="http://github.com/juanghurtado/jquery.tabi/zipball/master">source code</a>, and put it on your page.
+
 <pre><code>&lt;script type="text/javascript" src="js/jquery-1.4.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="js/jquery.tabi.js"&gt;&lt;script&gt;</code></pre>
+
+## Example pages
+
+Here you can see a few examples of Tabi:
+
+- <a href="http://tabi.coloresefimeros.com/example-1.html">Default use</a>
+- <a href="http://tabi.coloresefimeros.com/example-2.php">Setting default tab</a>
 
 ## Basic use
 
@@ -110,9 +119,3 @@ div.tabi-global {}
 ## Support
 
 Tabi is still in development, so surely it's full of bugs and mistakes. If you find one <a href="http://github.com/juanghurtado/jquery.tabi/issues">please let me know</a> (this also refers to this text, because my english is not good enough yet).
-
-## TO-DO
-
-- Code refactoring
-- Configuration system
-- Detailed examples
